@@ -22,8 +22,7 @@
 
         <ng-template #content let-c="close" let-d="dismiss">
             <div class="modal-header">
-                <h4 class="modal-title">you can change status of this user also you can <span style="color: red;">delete
-                    </span> </h4>
+                <h4 class="modal-title">you can Update  </h4>
                 <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -33,14 +32,14 @@
                 <!--Toggle dropdown starts-->
                 <div class="col-12">
                     <div class="card">
-                        <form >
+                        <form>
                             <div class="form-group">
                                 <label for="">Title</label>
-                                <input type="text"[(ngModel)]="PostObj.title" name="title" >
+                                <input type="text" class="form-control" [(ngModel)]="editObj.title" name="title">
                             </div>
                             <div class="form-group">
                                 <label for="">Body</label>
-                                <input type="text">
+                                <input type="text" class="form-control" [(ngModel)]="editObj.body" name="body">
                             </div>
                         </form>
                     </div>
@@ -48,7 +47,7 @@
                 <!--Toggle dropdown ends-->
             </div>
             <div class="modal-footer">
-
+                <button class="btn btn-info" (click)="Updatedata(editObj.id)">Save</button>
                 <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')">Close</button>
             </div>
         </ng-template>

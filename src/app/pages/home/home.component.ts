@@ -20,10 +20,16 @@ export class HomeComponent implements OnInit {
     id: ''
   }
   PostObj = {
-    title:"",
-    body:"",
-    id:"",
-    userid:""
+    title: "",
+    body: "",
+    id: "",
+    userid: ""
+  }
+  // using this Obj in modal
+  editObj = {
+    title: '',
+    body: '',
+    id: ''
   }
   closeResult: string;
   constructor(
@@ -73,19 +79,18 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  Updatedata(user) {
-    this.DeletePostId = user.id;
+  Updatedata(id) {
 
-    this.setUserData(user.id)
-    console.log(user.id)
-    this.HttpServie.Updatedata(user.id).subscribe(
+    this.editObj.id = id;
+    console.log(this.editObj.id)
+    this.HttpServie.Updatedata(id, this.editObj).subscribe(
       data => {
 
-        this.toastr.success("post" + user.id + " had been Updated");
-
+        this.toastr.success("post" + id + " had been Updated");
+        this.modalService.dismissAll();
       },
       err => {
-        this.toastr.error("post" + user.id + " hadn't been Updated");
+        this.toastr.error("post" + id + " hadn't been Updated");
         console.log(err);
       }
     );
@@ -93,10 +98,15 @@ export class HomeComponent implements OnInit {
 
 
   //this function to open Modal ////
-  open(user, content) {
-    this.DeletePostId = user.id
-    console.log(content['res'])
-    this.setUserData(user.id)
+  open(post, content) {
+    this.DeletePostId = post.id
+    console.log(post)
+    this.setUserData(post.id)
+    this.editObj.body = post.body;
+    this.editObj.title = post.title;
+    this.editObj.id = post.id;
+
+
 
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;

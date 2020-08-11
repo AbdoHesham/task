@@ -51,31 +51,31 @@ export class SinglepostComponent implements OnInit {
 
   }
 
-  onDeletePost(id) {
-    this.DeletePostId=id
-    this.setUserData(  id)
-    console.log(id)
+  // onDeletePost(id) {
+  //   this.DeletePostId=id
+  //   this.setUserData(  id)
+  //   console.log(id)
 
-    if (window.confirm('Are you sure you want to delete this post ' +id+ ' ?')) {
+  //   if (window.confirm('Are you sure you want to delete this post ' +id+ ' ?')) {
 
-      this.HttpServie.deletePost(id).subscribe(
-        data => {
+  //     this.HttpServie.deletePost(id).subscribe(
+  //       data => {
          
-          this.toastr.success("post" +id + " had been deleted");
-          this.router.navigateByUrl('/home/posts')
-        },
-        err => {
-          this.toastr.error("post" +id + " hadn't been deleted");
-          console.log(err);
-        }
-      );
-    }
-  }
+  //         this.toastr.success("post" +id + " had been deleted");
+  //         this.router.navigateByUrl('/home/posts')
+  //       },
+  //       err => {
+  //         this.toastr.error("post" +id + " hadn't been deleted");
+  //         console.log(err);
+  //       }
+  //     );
+  //   }
+  // }
 
-  setUserData(id) {
-    this.userInfo.id = id;
-    return this.userInfo
-  }
+  // setUserData(id) {
+  //   this.userInfo.id = id;
+  //   return this.userInfo
+  // }
 
 
 }

@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  apiUrl:"https://jsonplaceholder.typicode.com/";
 
-  apiUrl: string ;
 
   constructor( private _httpClient:HttpClient) {
-      this.apiUrl =  environment.baseUrl;
     }
   
 
@@ -24,9 +22,9 @@ GetPostByid(id): Observable<any> {
   return this._httpClient.get(`${this.apiUrl}posts/${id}`)
 }
 
-Updatedata(id) : Observable<any> {
+Updatedata(id,body) : Observable<any> {
 
-  return this._httpClient.put(`${this.apiUrl}posts`,id)
+  return this._httpClient.put(`${this.apiUrl}posts/${id}`,body)
 }
 
   // delete post
