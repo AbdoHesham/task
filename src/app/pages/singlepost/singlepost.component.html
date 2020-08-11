@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class=" col-8 offset-2 ">
+            <h1 class="text-center">
+                post : {{id}}
+            </h1>
+            <h1>{{title}}</h1>
+            <p>{{body}}</p>
+            <div class="row">
+                <div class="col-7">
+                    <span><button class="btn btn-primary " [routerLink]="['/home/posts']"> back to all posts
+                        </button></span>
+                </div>
+                <div class="col-5">
+                    <button class="btn btn-warning "> Update </button>
+                    <button class="btn btn-danger " (click)="onDeletePost(id)"> Delete </button>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

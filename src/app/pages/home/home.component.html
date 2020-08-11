@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>
+                All posts {{totalPosts}}
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-8  col-sm-12" *ngFor="let post of data">
+                <h1>{{post.title}}</h1>
+                <p>{{post.body}}</p>
+                <span><button class="btn btn-primary " [routerLink]="['/','home','post',post.id]"> ... see more
+                    </button></span>
+                <button class="btn btn-warning " (click)='open(post,content)'> Update </button>
+                <button class="btn btn-danger " (click)="onDeletePost(post)"> Delete </button>
+                <hr>
+
+            </div>
+
+        </div>
+        <!-- start modal  -->
+
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title">you can change status of this user also you can <span style="color: red;">delete
+                    </span> </h4>
+                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <!--Toggle dropdown starts-->
+                <div class="col-12">
+                    <div class="card">
+                        <form >
+                            <div class="form-group">
+                                <label for="">Title</label>
+                                <input type="text"[(ngModel)]="PostObj.title" name="title" >
+                            </div>
+                            <div class="form-group">
+                                <label for="">Body</label>
+                                <input type="text">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--Toggle dropdown ends-->
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')">Close</button>
+            </div>
+        </ng-template>
+
+        <!-- end modal  -->
+
+
+    </div>
+</div>
